@@ -1,9 +1,11 @@
+
+import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 part 'login_mobx.g.dart';
 
 class LoginBase = _LoginBase with _$LoginBase;
 
-abstract class _LoginBase with Store {
+abstract class _LoginBase with Store,ChangeNotifier {
   @observable
   String _username = '';
   @observable

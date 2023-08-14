@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:test_tasks/screens/home_screen/components/msg_welcome.dart';
 import 'package:test_tasks/utils/constants/app_strings.dart';
-import '../../providers/login_provider.dart';
+import '../../mobx/login_mobx.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -27,8 +27,7 @@ class LoginScreenState extends State<LoginScreen> with SnackMixin {
 
   @override
   Widget build(BuildContext context) {
-    final model = Provider.of<LoginProvider>(context);
-
+    final authStore = Provider.of<LoginBase>(context);
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -113,9 +112,9 @@ class LoginScreenState extends State<LoginScreen> with SnackMixin {
                   ),
                   onPressed: () async {
                     if (_formKey.currentState!.validate()) {
-                      model.setUsername(_usernameController.text);
-                      model.setPassword(_passwordController.text);
-                      bool canLogin = await model.login();
+                      authStore.setUsername(_usernameController.text);
+                      authStore.setPassword(_passwordController.text);
+                      bool canLogin = await authStore.login();
                       if (canLogin && mounted) {
                         showSuccess(context, AppStrings.loginSuccessMessage);
                         Navigator.pushReplacementNamed(context, Routes.home);
