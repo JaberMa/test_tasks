@@ -34,8 +34,8 @@ class LoginScreenState extends State<LoginScreen> {
         elevation: 0,
         leading: const Icon(Icons.turn_left),
       ),
-      body: Container(
-        padding: const EdgeInsets.only(top: 24, right: 20, left: 20),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
@@ -45,7 +45,7 @@ class LoginScreenState extends State<LoginScreen> {
             const SizedBox(
               height: 54,
             ),
-            Flexible(
+            Expanded(
               flex: 7,
               child: Form(
                 key: _formKey,
@@ -85,56 +85,52 @@ class LoginScreenState extends State<LoginScreen> {
                 ),
               ),
             ),
-            Expanded(
-              flex: 2,
-              child: Column(children: [
-                Center(
-                    child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      AppStrings.instructionMsg,
-                      style: TextStyle(
-                        fontWeight: FontWeight.w200,
-                      ),
+            Column(children: [
+              Center(
+                  child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    AppStrings.instructionMsg,
+                    style: TextStyle(
+                      fontWeight: FontWeight.w200,
                     ),
-                    GestureDetector(
-                      onTap: null,
-                      child: const Text(" Register"),
-                    ),
-                  ],
-                )),
-                const SizedBox(height: 16.0),
-                Container(
-                  //padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                  height: 50,
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    child: const Text(
-                      'Login',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    onPressed: () async {
-                      if (_formKey.currentState!.validate()) {
-                        model.setUsername(_usernameController.text);
-                        model.setPassword(_passwordController.text);
-                        bool canLogin = await model.login();
-                        if (canLogin && mounted) {
-                          Navigator.pushReplacementNamed(context, '/home');
-                        } else {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Cannot login! wrong credentials!'),
-                              duration: Duration(seconds: 2),
-                            ),
-                          );
-                        }
-                      }
-                    },
                   ),
+                  GestureDetector(
+                    onTap: null,
+                    child: const Text(" Register"),
+                  ),
+                ],
+              )),
+              const SizedBox(height: 16.0),
+              SizedBox(
+                height: 50,
+                width: double.infinity,
+                child: ElevatedButton(
+                  child: const Text(
+                    'Login',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  onPressed: () async {
+                    if (_formKey.currentState!.validate()) {
+                      model.setUsername(_usernameController.text);
+                      model.setPassword(_passwordController.text);
+                      bool canLogin = await model.login();
+                      if (canLogin && mounted) {
+                        Navigator.pushReplacementNamed(context, '/home');
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Cannot login! wrong credentials!'),
+                            duration: Duration(seconds: 2),
+                          ),
+                        );
+                      }
+                    }
+                  },
                 ),
-              ]),
-            ),
+              ),
+            ]),
           ],
         ),
       ),
