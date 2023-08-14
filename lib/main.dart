@@ -2,9 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:test_tasks/providers/login_provider.dart';
 import 'package:test_tasks/screens/home_screen/login_screen.dart';
+import 'package:test_tasks/utils/app_theme.dart';
+import 'package:test_tasks/utils/routes.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(EasyLocalization(
+    supportedLocales: const [Locale('en'), Locale('ar')],
+    path: 'assets/translations',
+    fallbackLocale: const Locale('en', 'US'),
+    startLocale: const Locale('en', 'US'),
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -13,10 +22,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Login Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      title: 'test',
+      theme: AppTheme.darkTheme,
+      onGenerateRoute: Routes.generateRoute,
       home: ChangeNotifierProvider(
         create: (_) => LoginProvider(),
         child: const LoginScreen(),

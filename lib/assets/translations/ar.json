@@ -1,0 +1,7 @@
+{
+    "loginSuccessMessage": "تم تسجيل الدخول بنجاح!",
+    "loginErrorMessage": "فشل تسجيل الدخول. يرجى التحقق من بيانات الدخول.",
+    "headlineWelcome": "سجل الدخول الآن",
+    "messageWelcome": "مرحبًا مجددًا. \\n لقد افتقدناك!",
+    "instructionMsg": "لا تملك حسابًا؟"
+  }
