@@ -1,5 +1,5 @@
-import 'dart:ffi';
-
+import 'package:test_tasks/utils/routes.dart';
+import '../../mixins/snack_mixin.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:test_tasks/screens/home_screen/components/msg_welcome.dart';
@@ -13,7 +13,7 @@ class LoginScreen extends StatefulWidget {
   LoginScreenState createState() => LoginScreenState();
 }
 
-class LoginScreenState extends State<LoginScreen> {
+class LoginScreenState extends State<LoginScreen> with SnackMixin {
   final _formKey = GlobalKey<FormState>();
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -117,14 +117,10 @@ class LoginScreenState extends State<LoginScreen> {
                       model.setPassword(_passwordController.text);
                       bool canLogin = await model.login();
                       if (canLogin && mounted) {
-                        Navigator.pushReplacementNamed(context, '/home');
+                        showSuccess(context, AppStrings.loginSuccessMessage);
+                        Navigator.pushReplacementNamed(context, Routes.home);
                       } else {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Cannot login! wrong credentials!'),
-                            duration: Duration(seconds: 2),
-                          ),
-                        );
+                        showError(context, AppStrings.loginErrorMessage);
                       }
                     }
                   },
