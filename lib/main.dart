@@ -10,8 +10,8 @@ void main() {
   runApp(EasyLocalization(
     supportedLocales: const [Locale('en'), Locale('ar')],
     path: 'assets/translations',
-    fallbackLocale: const Locale('en', 'US'),
-    startLocale: const Locale('en', 'US'),
+    fallbackLocale: const Locale('en'),
+    startLocale: const Locale('en'),
     child: const MyApp(),
   ));
 }

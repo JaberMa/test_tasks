@@ -14,5 +14,21 @@ class AppTheme {
             backgroundColor: Colors.white,
           ),
         ),
+        inputDecorationTheme: InputDecorationTheme(
+          hintStyle: const TextStyle(color: Colors.white),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(17.0),
+            borderSide: const BorderSide(color: Colors.grey),
+          ),
+          enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(17.0),
+              borderSide: const BorderSide(color: Colors.grey)),
+          labelStyle: const TextStyle(color: AppColors.greyedTextColor),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+          contentPadding:
+              const EdgeInsets.symmetric(vertical: 24.0, horizontal: 24.0),
+        ),
       );
 }
