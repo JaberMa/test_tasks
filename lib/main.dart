@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:test_tasks/screens/home_screen/login_screen.dart';
 import 'package:test_tasks/utils/app_theme.dart';
 import 'package:test_tasks/utils/routes.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'mobx/login_mobx.dart';
+
 
 void main() {
   runApp(EasyLocalization(
@@ -27,10 +25,7 @@ class MyApp extends StatelessWidget {
       title: 'test',
       theme: AppTheme.darkTheme,
       onGenerateRoute: Routes.generateRoute,
-      home: ChangeNotifierProvider(
-        create: (_) => LoginBase(),
-        child: const LoginScreen(),
-      ),
+      initialRoute: Routes.signIn,
     );
   }
 }

@@ -3,7 +3,8 @@ class AppStrings {
   static const String loginSuccessMessage = 'Login successful!';
   static const String loginErrorMessage = 'Cannot login! wrong credentials!';
   static const String headlineWelcome = "Let's sign you in.";
-  static const String messageWelcome = "Welcome back.\nYou've been missed!";
+  static const String messageWelcome = "Welcome back.";
+  static const String messageWelcome2 = "You've been missed!";
   static const String instructionMsg = "Don't have an account?";
 
   static const String username = "naeim";

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class MsgWelcome extends StatelessWidget {
@@ -11,7 +12,7 @@ class MsgWelcome extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Text(
-          headlineWelcome,
+          headlineWelcome.tr(),
           style: const TextStyle(
             fontSize: 36,
             fontWeight: FontWeight.w700,

@@ -1,11 +1,11 @@
-
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
+import 'package:test_tasks/utils/constants/app_strings.dart';
 part 'login_mobx.g.dart';
 
 class LoginBase = _LoginBase with _$LoginBase;
 
-abstract class _LoginBase with Store,ChangeNotifier {
+abstract class _LoginBase with Store, ChangeNotifier {
   @observable
   String _username = '';
   @observable
@@ -30,8 +30,8 @@ abstract class _LoginBase with Store,ChangeNotifier {
 
   @action
   Future<bool> login() async {
-    await Future.delayed(const Duration(seconds: 3));
-    if (_username.isNotEmpty && _password.isNotEmpty && _password == '1234') {
+    await Future.delayed(const Duration(seconds: 1));
+    if (_username == AppStrings.username && _password == AppStrings.password) {
       return true;
     } else {
       return false;
