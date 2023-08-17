@@ -12,7 +12,7 @@ class MsgWelcome extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Text(
-          headlineWelcome.tr(),
+          "msg_welcome".tr(),
           style: const TextStyle(
             fontSize: 36,
             fontWeight: FontWeight.w700,

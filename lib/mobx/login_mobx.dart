@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 import 'package:test_tasks/utils/constants/app_strings.dart';
 part 'login_mobx.g.dart';

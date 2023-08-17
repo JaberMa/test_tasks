@@ -1,10 +1,11 @@
 {
     "test Task": "test Task",
-    "Login successful!": "Login successful!",
+    "Login_successful!": "Login successful!",
     "Login failed. Please check your credentials.": "Login failed. Please check your credentials.",
     "Let's sign you in.": "Let's sign you in.",
     "Welcome back.": "Welcome back.",
     "You've been missed!":"You've been missed!",
+    "msg_welcome":"Welcome back. \nYou've been missed!",
     "Don't have an account?": "Don't have an account?",
     "Username":"Username",
     "Password":"Password",

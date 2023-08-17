@@ -1,7 +1,8 @@
 {
-    "Login successful!": "تم تسجيل الدخول بنجاح!",
+    "Login_successful!": "تم تسجيل الدخول بنجاح!",
     "Login failed. Please check your credentials.": "فشل تسجيل الدخول. يرجى التحقق من بيانات الدخول.",
     "Let's sign you in.": "سجل الدخول الآن",
+    "msg_welcome":"",
     "Welcome back.": "مرحبًا مجددًا. ",
     "You've been missed!":"لقد افتقدناك!",
     "Don't have an account?": "لا تملك حسابًا؟",
