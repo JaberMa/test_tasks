@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import '../../mixins/snack_mixin.dart';
@@ -36,8 +38,59 @@ class LoginScreenState extends State<LoginScreen> with SnackMixin {
   @override
   Widget build(BuildContext context) {
     final authInfo = Provider.of<LoginBase>(context);
-
     return Scaffold(
+      bottomNavigationBar: Observer(
+        builder: (context) {
+          return Wrap(children: [
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    AppStrings.instructionMsg,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w200,
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: null,
+                    child: Text(" Register".tr()),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: SizedBox(
+                height: 50,
+                width: double.infinity,
+                child: ElevatedButton(
+                  child: Text(
+                    'Log in'.tr(),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  onPressed: () async {
+                    if (_formKey.currentState!.validate()) {
+                      authInfo.setUsername(_usernameController.text);
+                      authInfo.setPassword(_passwordController.text);
+                      bool canLogin = await authInfo.login();
+                      if (canLogin && mounted) {
+                        showSuccess(
+                            context, AppStrings.loginSuccessMessage.tr());
+                        Navigator.pushReplacementNamed(
+                            context, HomeScreen.homeScreen);
+                      } else {
+                        showError(context, AppStrings.loginErrorMessage.tr());
+                      }
+                    }
+                  },
+                ),
+              ),
+            ),
+          ]);
+        },
+      ),
       appBar: AppBar(
         elevation: 0,
         leading: const Icon(Icons.turn_left),
@@ -46,10 +99,7 @@ class LoginScreenState extends State<LoginScreen> with SnackMixin {
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
         child: Column(
           children: [
-           const MsgWelcome(
-                headlineWelcome:
-               
-                    "${AppStrings.messageWelcome}"),
+            MsgWelcome(headlineWelcome: "${AppStrings.messageWelcome}"),
             const SizedBox(
               height: 40,
             ),
@@ -97,56 +147,6 @@ class LoginScreenState extends State<LoginScreen> with SnackMixin {
               ),
             ),
             const Expanded(child: SizedBox()),
-            Observer(
-              builder: (context) {
-                return Column(children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(
-                        AppStrings.instructionMsg,
-                        style: TextStyle(
-                          fontWeight: FontWeight.w200,
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: null,
-                        child: Text(" Register".tr()),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 16.0),
-                  SizedBox(
-                    height: 50,
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      child: Text(
-                        'Login'.tr(),
-                        style: const TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      onPressed: () async {
-                        if (_formKey.currentState!.validate()) {
-                          authInfo.setUsername(_usernameController.text);
-                          authInfo.setPassword(_passwordController.text);
-                          print(authInfo.password);
-
-                          bool canLogin = await authInfo.login();
-                          if (canLogin && mounted) {
-                            showSuccess(
-                                context, AppStrings.loginSuccessMessage.tr());
-                            Navigator.pushReplacementNamed(
-                                context, HomeScreen.homeScreen);
-                          } else {
-                            showError(
-                                context, AppStrings.loginErrorMessage.tr());
-                          }
-                        }
-                      },
-                    ),
-                  ),
-                ]);
-              },
-            ),
           ],
         ),
       ),
