@@ -5,7 +5,7 @@ part 'login_mobx.g.dart';
 
 class LoginBase = _LoginBase with _$LoginBase;
 
-abstract class _LoginBase with Store, ChangeNotifier {
+abstract class _LoginBase with Store {
   @observable
   String _username = '';
   @observable
