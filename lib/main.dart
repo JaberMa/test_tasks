@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:test_tasks/screens/login_screen/login_screen.dart';
 import 'package:test_tasks/utils/app_theme.dart';
 import 'package:test_tasks/utils/routes.dart';
 import 'package:easy_localization/easy_localization.dart';
 
-
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
   runApp(EasyLocalization(
     supportedLocales: const [Locale('en'), Locale('ar')],
     path: 'assets/translations',
@@ -25,7 +27,7 @@ class MyApp extends StatelessWidget {
       title: 'test',
       theme: AppTheme.darkTheme,
       onGenerateRoute: Routes.generateRoute,
-      initialRoute: Routes.signIn,
+      initialRoute: LoginScreen.logInScreen,
     );
   }
 }

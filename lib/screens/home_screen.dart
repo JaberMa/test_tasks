@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
-  static const String routeName = '/home';
+  static const String homeScreen = '/home';
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
@@ -14,6 +14,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home'),
+        automaticallyImplyLeading: false,
       ),
       body: const Center(
         child: Text('Welcome to the Home Screen!'),

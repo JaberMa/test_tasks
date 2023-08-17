@@ -1,12 +1,14 @@
-import 'package:test_tasks/utils/routes.dart';
 import '../../mixins/snack_mixin.dart';
 import 'package:flutter/material.dart';
-import 'package:test_tasks/screens/home_screen/components/msg_welcome.dart';
+import 'package:test_tasks/screens/login_screen/components/msg_welcome.dart';
 import 'package:test_tasks/utils/constants/app_strings.dart';
 import '../../mobx/login_mobx.dart';
 import 'package:easy_localization/easy_localization.dart';
 
+import '../home_screen.dart';
+
 class LoginScreen extends StatefulWidget {
+  static const String logInScreen = '/login';
   const LoginScreen({super.key});
 
   @override
@@ -120,7 +122,7 @@ class LoginScreenState extends State<LoginScreen> with SnackMixin {
                             if (canLogin && mounted) {
                               showSuccess(
                                   context, AppStrings.loginSuccessMessage.tr());
-                              Navigator.pushNamed(context, Routes.home);
+                              Navigator.pushNamed(context, HomeScreen.homeScreen);
                             } else {
                               showError(
                                   context, AppStrings.loginErrorMessage.tr());
