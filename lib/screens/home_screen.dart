@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:test_tasks/screens/login_screen/login_screen.dart';
-import '../mobx/login_mobx.dart';
+import '../mobx/login_store/login_mobx.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String homeScreen = '/home';

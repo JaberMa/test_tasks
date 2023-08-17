@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:test_tasks/utils/constants/app_strings.dart';
 
@@ -12,7 +11,7 @@ class MsgWelcome extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Text(
-          "lets_sign_you_in".tr(),
+          AppStrings.headlineWelcome,
           style: const TextStyle(
             fontSize: 36,
             fontWeight: FontWeight.w700,
@@ -22,7 +21,7 @@ class MsgWelcome extends StatelessWidget {
           height: 16,
         ),
         Text(
-          "msg_welcome".tr(),
+          AppStrings.messageWelcome,
           style: const TextStyle(
             fontSize: 32,
             fontWeight: FontWeight.w300,

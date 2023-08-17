@@ -70,6 +70,21 @@ mixin _$LoginBase on _LoginBase, Store {
     });
   }
 
+  late final _$stateAtom = Atom(name: '_LoginBase.state', context: context);
+
+  @override
+  LoadingState get state {
+    _$stateAtom.reportRead();
+    return super.state;
+  }
+
+  @override
+  set state(LoadingState value) {
+    _$stateAtom.reportWrite(value, super.state, () {
+      super.state = value;
+    });
+  }
+
   late final _$loginAsyncAction =
       AsyncAction('_LoginBase.login', context: context);
 
@@ -107,6 +122,7 @@ mixin _$LoginBase on _LoginBase, Store {
   String toString() {
     return '''
 isAuthenticated: ${isAuthenticated},
+state: ${state},
 username: ${username},
 password: ${password}
     ''';

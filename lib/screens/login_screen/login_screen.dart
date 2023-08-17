@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
@@ -6,8 +5,9 @@ import '../../mixins/snack_mixin.dart';
 import 'package:flutter/material.dart';
 import 'package:test_tasks/screens/login_screen/components/msg_welcome.dart';
 import 'package:test_tasks/utils/constants/app_strings.dart';
-import '../../mobx/login_mobx.dart';
+import '../../mobx/login_store/login_mobx.dart';
 import 'package:easy_localization/easy_localization.dart';
+import '../../mobx/enum_state.dart';
 import '../home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -66,10 +66,12 @@ class LoginScreenState extends State<LoginScreen> with SnackMixin {
                 height: 50,
                 width: double.infinity,
                 child: ElevatedButton(
-                  child: Text(
-                    'Log in'.tr(),
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                  ),
+                  child: authInfo.state==LoadingState.loading
+      ? CircularProgressIndicator() // Show loading indicator if isLoading is true
+      : Text(
+          'Log in'.tr(),
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
                   onPressed: () async {
                     if (_formKey.currentState!.validate()) {
                       authInfo.setUsername(_usernameController.text);

@@ -1,5 +1,7 @@
 import 'package:mobx/mobx.dart';
 import 'package:test_tasks/utils/constants/app_strings.dart';
+
+import '../enum_state.dart';
 part 'login_mobx.g.dart';
 
 class LoginBase = _LoginBase with _$LoginBase;
@@ -12,6 +14,8 @@ abstract class _LoginBase with Store {
   @observable
   bool isAuthenticated = false;
 
+  @observable
+  LoadingState state = LoadingState.none;
   @computed
   String get username => _username;
   @computed
@@ -29,10 +33,12 @@ abstract class _LoginBase with Store {
 
   @action
   Future<bool> login() async {
+    state = LoadingState.loading;
     await Future.delayed(const Duration(seconds: 1));
     if (_username == AppStrings.username && _password == AppStrings.password) {
       return true;
     } else {
+      state = LoadingState.none;
       return false;
     }
   }
