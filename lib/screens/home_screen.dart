@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
@@ -28,14 +29,14 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             Observer(
               builder: (BuildContext context) {
-                return Text('Welcome to the Home Screen! ${authInfo.username}!');
+                return Text("${"home_msg".tr()} ${authInfo.username}!");
               },
             ),
             ElevatedButton(
                 onPressed: () {
                   Navigator.popAndPushNamed(context, LoginScreen.logInScreen);
                 },
-                child: Text("LOgout"))
+                child: const Text("LOgout"))
           ],
         ),
       ),

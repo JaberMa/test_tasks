@@ -46,10 +46,10 @@ class LoginScreenState extends State<LoginScreen> with SnackMixin {
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
         child: Column(
           children: [
-            MsgWelcome(
-                headlineWelcome: AppStrings.headlineWelcome,
-                messageWelcome:
-                    "${AppStrings.messageWelcome.tr()}\n${AppStrings.messageWelcome2.tr()}"),
+           const MsgWelcome(
+                headlineWelcome:
+               
+                    "${AppStrings.messageWelcome}"),
             const SizedBox(
               height: 40,
             ),
@@ -137,7 +137,8 @@ class LoginScreenState extends State<LoginScreen> with SnackMixin {
                             Navigator.pushReplacementNamed(
                                 context, HomeScreen.homeScreen);
                           } else {
-                            showError(context, 'Login_successful!'.tr());
+                            showError(
+                                context, AppStrings.loginErrorMessage.tr());
                           }
                         }
                       },

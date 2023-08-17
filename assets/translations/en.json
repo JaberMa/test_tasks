@@ -1,14 +1,13 @@
 {
     "test Task": "test Task",
-    "Login_successful!": "Login successful!",
-    "Login failed. Please check your credentials.": "Login failed. Please check your credentials.",
-    "Let's sign you in.": "Let's sign you in.",
-    "Welcome back.": "Welcome back.",
-    "You've been missed!":"You've been missed!",
+    "Login_successful": "Login successful!",
+    "login_failed": "Login failed. Please check your credentials.",
+    "lets_sign_you_in.": "Let's sign you in.",
     "msg_welcome":"Welcome back. \nYou've been missed!",
-    "Don't have an account?": "Don't have an account?",
-    "Username":"Username",
-    "Password":"Password",
-    "Register":"Register",
-    "Login":"Login"
+    "dont_have_an_account": "Don't have an account?",
+    "username":"Username",
+    "password":"Password",
+    "register":"Register",
+    "login":"Login",
+    "home_msg":"Welcome to the Home Screen!"
   }

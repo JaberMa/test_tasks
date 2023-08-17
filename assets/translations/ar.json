@@ -1,13 +1,12 @@
 {
-    "Login_successful!": "تم تسجيل الدخول بنجاح!",
-    "Login failed. Please check your credentials.": "فشل تسجيل الدخول. يرجى التحقق من بيانات الدخول.",
-    "Let's sign you in.": "سجل الدخول الآن",
-    "msg_welcome":"",
-    "Welcome back.": "مرحبًا مجددًا. ",
-    "You've been missed!":"لقد افتقدناك!",
-    "Don't have an account?": "لا تملك حسابًا؟",
-    "Username":"اسم المستخدم",
-    "Password":"كلمة المرور",
-    "Register":"سجل الآن",
-    "Login":"سجل الدخول"
+    "login_successful": "تم تسجيل الدخول بنجاح!",
+    "login_failed": "فشل تسجيل الدخول. يرجى التحقق من بيانات الدخول.",
+    "lets_sign_you_in": "سجل الدخول الآن",
+    "msg_welcome":"مرحبًا مجددًا. \nلقد افتقدناك! ",
+    "dont_have_an_account": "لا تملك حسابًا؟",
+    "username":"اسم المستخدم",
+    "password":"كلمة المرور",
+    "register":"سجل الآن",
+    "login":"سجل الدخول",
+    "home_msg":"مرحبا بك "
   }

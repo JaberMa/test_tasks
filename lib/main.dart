@@ -4,7 +4,6 @@ import 'package:test_tasks/screens/login_screen/login_screen.dart';
 import 'package:test_tasks/utils/app_theme.dart';
 import 'package:test_tasks/utils/routes.dart';
 import 'package:easy_localization/easy_localization.dart';
-
 import 'mobx/login_mobx.dart';
 
 void main() async {
@@ -21,7 +20,6 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-  static LoginBase authStore = LoginBase();
   @override
   Widget build(BuildContext context) => Provider<LoginBase>(
       create: (_) => LoginBase(),
@@ -34,18 +32,3 @@ class MyApp extends StatelessWidget {
         initialRoute: LoginScreen.logInScreen,
       ));
 }
-
-/*
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
-      title: 'test',
-      theme: AppTheme.darkTheme,
-      onGenerateRoute: Routes.generateRoute,
-      initialRoute: LoginScreen.logInScreen,
-    );
-  }
-}*/
