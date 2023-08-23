@@ -1,9 +1,9 @@
-
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:provider/provider.dart';
+import 'package:test_tasks/screens/auth_screen/signup_screen.dart';
 import '../../mixins/snack_mixin.dart';
 import 'package:flutter/material.dart';
-import 'package:test_tasks/screens/login_screen/components/msg_welcome.dart';
+import 'package:test_tasks/screens/auth_screen/components/msg_welcome.dart';
 import 'package:test_tasks/utils/constants/app_strings.dart';
 import '../../mobx/login_store/login_mobx.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -48,13 +48,14 @@ class LoginScreenState extends State<LoginScreen> with SnackMixin {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    AppStrings.instructionMsg,
+                    AppStrings.instructionMsgLoginScreen,
                     style: const TextStyle(
                       fontWeight: FontWeight.w200,
                     ),
                   ),
                   GestureDetector(
-                    onTap: null,
+                    onTap: () => Navigator.popAndPushNamed(
+                        context, SingupScreen.singUpScreen),
                     child: Text(" Register".tr()),
                   ),
                 ],
@@ -66,12 +67,12 @@ class LoginScreenState extends State<LoginScreen> with SnackMixin {
                 height: 50,
                 width: double.infinity,
                 child: ElevatedButton(
-                  child: authInfo.state==LoadingState.loading
-      ? CircularProgressIndicator() // Show loading indicator if isLoading is true
-      : Text(
-          'Log in'.tr(),
-          style: const TextStyle(fontWeight: FontWeight.bold),
-        ),
+                  child: authInfo.state == LoadingState.loading
+                      ? CircularProgressIndicator() // Show loading indicator if isLoading is true
+                      : Text(
+                          'Log in'.tr(),
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        ),
                   onPressed: () async {
                     if (_formKey.currentState!.validate()) {
                       authInfo.setUsername(_usernameController.text);
@@ -101,7 +102,10 @@ class LoginScreenState extends State<LoginScreen> with SnackMixin {
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
         child: Column(
           children: [
-            MsgWelcome(headlineWelcome: "${AppStrings.messageWelcome}"),
+            MsgWelcome(
+              messageWelcome: "${AppStrings.messageWelcomeloginScreen}",
+              headlineWelcome: "${AppStrings.headlineWelcomeLoginScreen}",
+            ),
             const SizedBox(
               height: 40,
             ),
