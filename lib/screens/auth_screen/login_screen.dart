@@ -19,7 +19,7 @@ class LoginScreen extends StatefulWidget {
 
 class LoginScreenState extends State<LoginScreen> with SnackMixin {
   final _formKey = GlobalKey<FormState>();
-  final _usernameController = TextEditingController();
+  final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   bool obscureText = true;
   void toggleObscureText() {
@@ -30,7 +30,7 @@ class LoginScreenState extends State<LoginScreen> with SnackMixin {
 
   @override
   void dispose() {
-    _usernameController.dispose();
+    _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
   }
@@ -75,7 +75,7 @@ class LoginScreenState extends State<LoginScreen> with SnackMixin {
                         ),
                   onPressed: () async {
                     if (_formKey.currentState!.validate()) {
-                      authInfo.setUsername(_usernameController.text);
+                      authInfo.setEmail(_emailController.text);
                       authInfo.setPassword(_passwordController.text);
                       bool canLogin = await authInfo.login();
                       if (canLogin && mounted) {
@@ -115,7 +115,7 @@ class LoginScreenState extends State<LoginScreen> with SnackMixin {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   TextFormField(
-                    controller: _usernameController,
+                    controller: _emailController,
                     decoration: InputDecoration(
                       labelText: 'Phone,Username or Email'.tr(),
                       border: OutlineInputBorder(

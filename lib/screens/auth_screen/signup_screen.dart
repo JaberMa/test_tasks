@@ -77,9 +77,10 @@ class SingupScreenState extends State<SingupScreen> with SnackMixin {
                         ),
                   onPressed: () async {
                     if (_formKey.currentState!.validate()) {
-                      authInfo.setUsername(_usernameController.text);
+                      authInfo.setUsername(_usernameController.text.trim());
                       authInfo.setPassword(_passwordController.text);
-                      bool canLogin = await authInfo.login();
+                      authInfo.setEmail(_emailController.text.trim());
+                      bool canLogin = await authInfo.singup();
                       if (canLogin && mounted) {
                         showSuccess(
                             context, AppStrings.loginSuccessMessage.tr());

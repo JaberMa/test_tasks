@@ -15,6 +15,12 @@ mixin _$LoginBase on _LoginBase, Store {
   String get username => (_$usernameComputed ??=
           Computed<String>(() => super.username, name: '_LoginBase.username'))
       .value;
+  Computed<String>? _$emailComputed;
+
+  @override
+  String get email => (_$emailComputed ??=
+          Computed<String>(() => super.email, name: '_LoginBase.email'))
+      .value;
   Computed<String>? _$passwordComputed;
 
   @override
@@ -35,6 +41,21 @@ mixin _$LoginBase on _LoginBase, Store {
   set _username(String value) {
     _$_usernameAtom.reportWrite(value, super._username, () {
       super._username = value;
+    });
+  }
+
+  late final _$_emailAtom = Atom(name: '_LoginBase._email', context: context);
+
+  @override
+  String get _email {
+    _$_emailAtom.reportRead();
+    return super._email;
+  }
+
+  @override
+  set _email(String value) {
+    _$_emailAtom.reportWrite(value, super._email, () {
+      super._email = value;
     });
   }
 
@@ -108,6 +129,17 @@ mixin _$LoginBase on _LoginBase, Store {
   }
 
   @override
+  void setEmail(String value) {
+    final _$actionInfo =
+        _$_LoginBaseActionController.startAction(name: '_LoginBase.setEmail');
+    try {
+      return super.setEmail(value);
+    } finally {
+      _$_LoginBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setPassword(String value) {
     final _$actionInfo = _$_LoginBaseActionController.startAction(
         name: '_LoginBase.setPassword');
@@ -124,6 +156,7 @@ mixin _$LoginBase on _LoginBase, Store {
 isAuthenticated: ${isAuthenticated},
 state: ${state},
 username: ${username},
+email: ${email},
 password: ${password}
     ''';
   }
